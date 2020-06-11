@@ -1,0 +1,175 @@
+
+/* ====================================================== */
+/* Vertical navbar source: https://bootstrapious.com/p/bootstrap-vertical-navbar */
+
+.vertical-nav {
+    padding-top: 57px;
+    width: 13rem;
+    max-height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.4s;
+    background-color: rgba(214, 214, 214, 0.4);
+    z-index: 1;
+	height: 100vh;
+}
+
+#sidebartoggle {
+	padding-right: 1rem;
+}
+
+@media (max-height: 960px) {
+  .vertical-nav {
+    overflow-y: scroll;
+  }
+}
+
+  #sidebarCollapse.active {
+    max-width: 100%;
+    margin: 0;
+    transition: all 0.4s;
+  }
+  
+  #sidebarCollapse {
+    max-width: 100%;
+    margin: 0;
+    transition: all 0.4s;
+    background-color: rgb(230, 230, 230);
+  }
+  
+  #sidebartoggle {
+    z-index:1;
+    }
+  
+  
+#sidebar.active {
+      margin-left: -13rem;
+    } 
+
+.page-content {
+  margin-top: 57px;
+  padding-top: 2%;
+  padding-bottom: 2%;	
+  max-width: calc(100% - 13rem);
+  margin-left: 13rem;
+  transition: all 0.4s;
+}
+
+#content.active {
+  max-width: 100%;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.vertical-nav .mobile_links {
+	display: none;
+	color: white !important;
+}
+
+/* For keeping the navbar active on desktop */
+@media (min-width: 769px){	
+		#sidebarCollapse {
+			display: none;
+		}
+		
+		.vertical-nav.active {
+		padding-top: 57px;
+		width: 13rem;
+		max-height: 100%;
+		position: fixed;
+		top: 0;
+		left: 0;
+		box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
+		transition: all 0.4s;
+		background-color: rgba(214, 214, 214, 0.4);
+		z-index: 1;
+		height: 100vh;
+	}
+	  #content.active {
+	  margin-top: 57px;
+	  padding-top: 2%;
+	  padding-bottom: 2%;	
+	  max-width: calc(100% - 13rem);
+	  margin-left: 13rem;
+	  transition: all 0.4s;
+	}
+	#sidebar.active {
+      margin-left: 0rem;
+    } 
+}
+
+@media (max-width: 993px) {
+		.vertical-nav .mobile_links {
+		display: block;
+	}
+}
+
+@media (max-width: 768px) {
+	
+ #content {
+      width: 100%;
+      margin-left: 0;
+	  margin-right: 0;
+	  margin-top: 57px;
+	  max-width: 100%;
+  }  
+
+	.vertical-nav{
+		background-color: rgba(214, 214, 214, 0.8);
+	}	
+	
+	#sidebartoggle {
+	padding-right: 0px;
+}
+	
+}	
+
+/* ====================================================== */
+
+.navbar {
+    background-color:rgba(6, 16, 34, 1);
+    z-index: 2;
+}
+
+.nav-item {
+    text-align: left;
+}
+
+.navbar_search_button {
+    color: white;
+    background-color: black;
+}
+
+.navbar_search_button:hover {
+    color: white;
+    background-color: black;
+}
+
+.vertical-nav .nav-item {
+    margin: 0 auto;
+    width: 70%;
+    padding-top: 5%;
+    padding-bottom: 5%;
+}
+
+.vertical-nav .nav-item .icon {
+    text-align:center;
+    align-items: center;
+    justify-content: center;
+    display: inline-block;
+    width: 100%;
+}
+
+.vertical-nav .nav-item .nav-link {
+    border: white;
+    background:rgba(63, 144, 158, 0.6);
+    border-radius: 25px;
+    text-align: center;
+}
+
+.Welcome {
+  color: black;
+}
+

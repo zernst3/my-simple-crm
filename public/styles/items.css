@@ -1,0 +1,51 @@
+#add_remove {
+    padding-bottom: 10px;
+    font-size: 1.2rem;
+}
+
+.item_table {
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+.fa-exclamation-circle {
+    color: red;
+}
+
+.fa-exclamation-triangle {
+    color: yellow;
+}
+
+.fa-plus {
+    color: green;
+}
+
+.fa-minus {
+    color: red;
+}
+
+.fa-check {
+	color: green;
+}
+
+.key {
+    padding-bottom: 5px;
+}
+
+.key .icon {
+    padding-right: 5px;
+}
+
+.item_small_table {
+  max-height: 100%;
+  padding: 10px;
+  margin: auto;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  color: black;
+  max-width: 90%;
+  position: relative;
+  font-size: 1.2em;
+  border: 1px solid rgba(0,0,0,.125);
+  border-radius: 10px;
+}

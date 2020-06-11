@@ -1,0 +1,137 @@
+<%- include ('../partials/header'); %>
+<title>Ticket Information</title>
+<link rel="stylesheet" type="text/css" href="/styles/information_card.css">
+<%- include ('../partials/navbar'); %>
+
+	<h1 class="page_title pt-2">Ticket Information</h1>
+	<div class="card_content">
+		<div class="row stripe_1 block_info">
+			<div class="col-lg-6">
+				<p class="title">Ticket Name:</p>
+			</div>
+			<div class="col-lg-6">
+				<p class="info"><%= ticket.ticket_name %></p>
+			</div>
+		</div>
+		<div class="row stripe_2 block_info">
+			<div class="col-lg-6">
+				<p class="title">Created By User:</p>
+			</div>
+			<div class="col-lg-6">
+				<p class="info">
+					<% if (ticket.created_by) { %>		
+					<%= ticket["created_by"].username %>
+					<% } else { %>	
+						[deleted]
+					<% } %>	
+				</p>
+			</div>
+		</div>
+		<div class="row stripe_1 block_info">
+			<div class="col-lg-6">
+				<p class="title">Assigned to:</p>
+			</div>
+			<div class="col-lg-6">
+				<p class="info">
+					<% if (ticket.assigned_user) { %>		
+					<%= ticket["assigned_user"].username %>
+					<% } else { %>	
+						[deleted]
+					<% } %>	
+				</p>
+			</div>
+		</div>
+		<div class="row stripe_2 block_info">
+			<div class="col-lg-6">
+				<p class="title">Status:</p>
+			</div>
+			<div class="col-lg-6">
+				<% if (Date.now() < ticket.due_date && !ticket.completed_date) { %>
+					<p><i class="fas fa-exclamation-triangle"></i> Not Yet Completed</p>
+					<% } %>
+					<% if (Date.now() > ticket.due_date && !ticket.completed_date) { %>
+					<p><i class="fas fa-exclamation-circle"></i> Past Due</p>
+					<% } %>
+					<% if (ticket.completed_date) { %>
+					<p class="organization_name"><i class="fas fa-check"></i> Completed by: 
+						<% if (ticket["completed_by_user"]) { %>
+							<%= ticket["completed_by_user"].username %>
+						<% } else { %>
+							[deleted]
+						<% } %>	
+						on</p> <p><%= ticket.completed_date.toDateString() %></p>
+				<% } %>	
+			</div>
+		</div>
+		<div class="row stripe_1 block_info">
+			<div class="col-lg-6">
+				<p class="title">Date Added: </p>
+			</div>
+			<div class="col-lg-6">
+				<p><%= ticket.date_added.toDateString() %></p>
+			</div>
+		</div>
+		<div class="row stripe_2 block_info">
+			<div class="col-lg-6">
+				<p class="title">Due Date:</p>
+			</div>
+			<div class="col-lg-6">
+				<% if (ticket.due_date) { %>
+					<p><%= ticket.due_date.toDateString() %></p>
+				<% } %>	
+			</div>
+		</div>
+		<div class="row stripe_1 block_info">
+			<div class="col-lg-6">
+				<p class="title">Date Added: </p>
+			</div>
+			<div class="col-lg-6">
+				<p><%= ticket.date_added.toDateString() %></p>
+			</div>
+		</div>
+		<div class="row stripe_2 block_info">
+			<div class="col-lg-6">
+				<p class="title">Description:</p>
+			</div>
+			<div class="col-lg-6">
+				<%= ticket.description %>
+			</div>
+		</div>
+
+		<% if (ticket.completed_description){ %>
+		<div class="row stripe_1 block_info">
+			<div class="col-lg-6">
+				<p class="title">Completed Description:</p>
+			</div>
+			<div class="col-lg-6">
+				<p><%= ticket.completed_description %></p>
+			</div>
+		</div>
+		<% } %>
+
+		<div class="row pt-3">
+			<div class="col-xl-4">
+				<% if (currentUser.user_permissions === "Administrator" || currentUser.user_permissions === "Manager") { %>
+					<form action="/tickets/<%= ticket._id %>/edit" method="GET">
+						<button class="edit zoom">Edit Ticket</button>
+					</form>	
+					<% } %>
+			</div>
+			<div class="col-xl-4">
+				<% if (!ticket.completed_date) { %>
+					<form action="/tickets/<%= ticket._id %>/complete_form" method="GET">
+						<button class="edit_complete zoom">Mark Complete</button>
+					</form>	
+					<% } %>
+			</div>
+			<div class="col-xl-4">
+				<% if (currentUser.user_permissions === "Administrator") { %>
+					<form action="/tickets/<%= ticket._id %>?_method=DELETE" method="POST" onclick="return confirm('Are you sure you want to delete this ticket?');">
+						<button class="delete zoom">Delete Ticket</button>
+					</form>	
+					<% } %>
+			</div>
+		</div>		
+	</div>
+
+<%- include ('../partials/footer'); %>

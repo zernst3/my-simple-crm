@@ -1,0 +1,61 @@
+<%- include ('../partials/header'); %>
+<title>Transactions</title>
+<%- include ('../partials/navbar'); %>
+
+
+  <h1 class="page_title pt-2">Transactions</h1>
+
+
+  <div class="item_table">
+    <% if (currentUser.user_permissions === "Manager" || currentUser.user_permissions === "Administrator") { %>
+	  <a href="/transactions/add">Add New Transaction</a>
+	<% } %>  
+      <table class="displayTransactions stripe">
+          <thead>
+              <tr>
+				<th>Deposited Date:</th>
+                <th>Client Name:</th>
+                <th>Associated Job:</th>                
+				<th>Date Added:</th>
+				<th>Transaction Amount:</th>
+              </tr>
+          </thead>
+
+          <tbody class="tableData">
+			  
+				<% transactions.forEach(function(transaction){ %>
+				  	
+						<tr>
+							<td><a href="/transactions/<%= transaction._id %>"><%= transaction["transaction_info"]["date"].toDateString() %></a></td>
+							<% if (transaction["client"]) { %>
+								<% if (transaction["client"].organization_name) { %>
+									<td><%= transaction["client"].organization_name %></td>
+								<% } else { %>
+									<td>
+										<%= transaction["client"].last_name %>, 
+										<% if (transaction["client"].middle_name) { %>
+										<%= transaction["client"].middle_name %> 
+										<% } %>
+										<%= transaction["client"].first_name %> 
+									</td>
+								<% } %>	
+							<% } else { %>
+								<td>[deleted]</td>
+							<% } %>	
+							<% if (transaction["job"]) { %>
+								<td><%= transaction["job"].job_name %></td>
+							<% } else { %>
+								<td>[deleted]</td>
+							<% } %>	
+							<td><%= transaction.date_added.toDateString() %></td>
+							<td>$<%= transaction["transaction_info"]["new_amount"] %></td>
+						</tr>
+
+			  	<% }) %>
+			  
+          </tbody>
+
+        </table>
+  </div>
+
+<%- include ('../partials/footer'); %>

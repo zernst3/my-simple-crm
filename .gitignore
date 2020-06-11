@@ -1,0 +1,4 @@
+.env 
+node_modules/
+VSSSH.txt
+VSSSH.txt.pub

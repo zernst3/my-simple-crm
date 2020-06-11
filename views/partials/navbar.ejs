@@ -1,0 +1,118 @@
+		<div>
+          <nav class="navbar navbar-expand-lg navbar-dark fixed-top py-2">
+
+            <div class="container-fluid">
+              <div id="sidebartoggle">
+                <button id="sidebarCollapse" type="button" class="toggle-button btn btn-light rounded-pill shadow-sm zoom"><i class="fa fa-bars mr-2"></i><small class="text-uppercase font-weight-bold">Sidebar</small></button>
+              </div>
+              <div class="software_name">
+
+                    <div class="media d-flex align-items-center">
+                      <div class="media-body">
+                        <h4 class="m-0">MY SIMPLE <i class="fas fa-check"></i> CRM</h4>
+                      </div>
+                    </div>
+              </div>
+              
+              <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                  </button> -->
+              <div class="collapse navbar-collapse" id="navbarResponsive">
+
+                <ul class="navbar-nav ml-auto">
+					<% if (currentUser.user_permissions === "Administrator") { %>
+				  <li class="nav-item zoom">
+                    <a class="nav-link" href="/users">Users</a>
+                  </li>
+					<% } %>
+                  <li class="nav-item zoom">
+                    <a class="nav-link" href="/users/<%= currentUser._id %>">My Account</a>
+                  </li>
+                  <li class="nav-item zoom">
+                    <a class="nav-link" href="/logout">Logout</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </nav>
+        </div>
+                
+        <div class="text-white vertical-nav active" id="sidebar">
+       
+          <p class="Welcome font-weight-bold text-uppercase px-3 small pt-3 pb-2 mb-0">Welcome!</p>
+		  <p class="Welcome font-weight-bold px-3 small py-2 mb-0">Signed in as: <%= currentUser.username %></p>
+        
+          <ul class="nav flex-column mb-0">
+            <li class="nav-item zoom">
+              <a href="/" class="nav-link text-light font-italic">
+                <i class="icon fas fa-book fa-3x py-3"></i>
+                <div>Dashboard</div>
+              </a>
+            </li>
+            <li class="nav-item zoom">
+              <a href="/tickets" class="nav-link text-light font-italic">
+                <i class="icon fas fa-list fa-3x py-3"></i>
+                <div>Tickets</div>
+              </a>
+            </li>
+            <li class="nav-item zoom">
+              <a href="/clients" class="nav-link text-light font-italic">
+                <i class="fas fa-user-tie fa-3x py-3"></i>
+                <div>Clients</div>
+              </a>
+            </li>
+            <li class="nav-item zoom">
+              <a href="/jobs" class="nav-link text-light font-italic">
+                <i class="icon fas fa-people-carry fa-3x py-3"></i>
+                <div>Jobs</div>
+              </a>
+            </li>
+            <li class="nav-item zoom">
+              <a href="/transactions" class="nav-link text-light font-italic">
+                <i class="fas fa-money-check-alt fa-3x py-3"></i>
+                <div>Tansactions</div>
+              </a>
+            </li>
+			<div class="mobile_links">
+				<% if (currentUser.user_permissions === "Administrator") { %>
+				<li class="nav-item">
+				  <a href="/users" class="nav-link text-light font-italic">
+					<div>Users</div>
+				  </a>
+				</li>
+				<% } %>
+				<li class="nav-item">
+				  <a href="/users/<%= currentUser._id %>" class="nav-link text-light font-italic">
+					<div>My Account</div>
+				  </a>
+				</li>
+				<li class="nav-item">
+				  <a href="/logout" class="nav-link text-light font-italic">
+					<div>Logout</div>
+				  </a>
+				</li>				
+			</div>  
+          </ul>  
+        </div>
+
+<div class="page-content active" id="content">
+
+  <!-- Flash Messages -->
+  <% if (error && error.length > 0) { %>
+    <div class="container">
+      <div class="alert alert-danger"><%= error %></div>
+    </div>
+  <% } %>
+  <% if (success && success.length > 0) { %>
+    <div class="container">
+      <div class="alert alert-success"><%= success %></div>
+    </div>
+  <% } %> 
+  <% if (info && info.length > 0) { %>
+    <div class="container">
+      <div class="alert alert-warning"><%= info %></div>
+    </div>
+  <% } %> 
+      
+
+

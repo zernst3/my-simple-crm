@@ -1,0 +1,41 @@
+<%- include ('partials/header'); %>
+<link rel="stylesheet" type="text/css" href="/styles/login.css">
+<title>Login</title>
+
+<div class="top_margin">
+
+  <!-- Flash Messages -->
+  <% if (error && error.length > 0) { %>
+    <div class="container">
+      <div class="alert alert-danger"><%= error %></div>
+    </div>
+  <% } %>
+  <% if (success && success.length > 0) { %>
+    <div class="container">
+      <div class="alert alert-success"><%= success %></div>
+    </div>
+  <% } %> 
+  <% if (info && info.length > 0) { %>
+    <div class="container">
+      <div class="alert alert-warning"><%= info %></div>
+    </div>
+  <% } %> 
+
+	<div class="container form_content">
+		<h1 class="m-0">MY SIMPLE <i class="fas fa-check"></i> CRM</h1>
+		<h2 class="py-2">Login:</h2>
+		<form action="/login" method="POST">
+			<div class="form-group">
+				<input autocomplete="off" autofocus class="form-control" name="username" placeholder="Username" type="text">
+			</div>
+			<div class="form-group">
+				<input class="form-control" name="password" placeholder="Password" type="password">
+			</div>
+			<button class="button zoom" type="submit">Submit</button>
+		</form>
+	</div>		
+</div>
+
+
+
+<%- include ('partials/footer'); %>

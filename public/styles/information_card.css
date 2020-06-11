@@ -1,0 +1,39 @@
+p {
+	margin: 0;
+}
+
+.title {
+	font-weight: bold;
+}
+
+.card_content {
+  max-height: 100%;
+  padding: 25px;
+  margin: auto;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  color: black;
+  width: 100%;
+  max-width: 1000px;
+  position: relative;
+  font-size: 1.2em;
+  border: 1px solid rgba(0,0,0,.125);
+  border-radius: 10px;
+  background-color: #fff;
+}
+
+.block_info {
+	padding: 1.5rem;
+}
+
+.card_content form {
+	display: inline;
+}
+
+.stripe_1 {
+  background-color: white;
+}
+
+.stripe_2 {
+  background-color: rgb(212, 212, 212);
+}

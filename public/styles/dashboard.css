@@ -1,0 +1,89 @@
+.custom_card {
+    padding: 2%;
+    border-radius: 15px;
+	min-width: 15rem;
+}
+
+.row {
+    padding-right: 5%;
+    padding-left: 5%;
+	margin-right: 0px;
+	margin-left: 0px;
+}
+
+.card_padding {
+    padding-bottom: 2%;
+}
+
+.custom_card i {
+	padding-bottom: 1rem;
+}
+
+#myTransactionsChart {
+	min-height: 15rem;
+	min-width: 18rem;
+}
+
+.card-title {
+	font-size: 1.5rem;
+}
+
+.card-body {
+	text-align: center;
+}
+
+.card_text {
+	font-weight: bold;
+	color: rgb(255, 255, 255);
+}
+
+.card_text_bottom {
+	font-size: 2rem;
+	margin-bottom: 0rem;
+}
+
+.tickets {
+	background-color: rgba(62, 91, 112);
+}
+
+.clients {
+	background-color: rgba(64, 112, 62);	
+}
+
+.jobs {
+	background-color: rgba(112, 62, 62);	
+}
+
+.transactions {
+	background-color: rgb(165, 157, 47);	
+}
+
+.dropdown_parent {
+    position: relative;
+}
+
+.dropdown, .dropdown1 {
+    padding: 0%;
+    display: none;
+    position: relative;
+    width: 100%;
+    max-height: 0%;
+    font-size: 100%;
+    text-align: center;
+    border-radius: 5px;
+	transition: all .9s;
+}
+
+.dropdown_on {
+	padding: 1%;
+    display: block;
+    transition-property: all;
+    transition-duration: 1s;
+	z-index: 0;
+}
+
+.monthly_income, .monthly_jobs {
+	margin-top: 2rem;
+	margin-left: 1rem;
+	position: relative;
+}

@@ -1,0 +1,142 @@
+<%- include ('../partials/header'); %>
+<title>Transaction Information</title>
+<link rel="stylesheet" type="text/css" href="/styles/information_card.css">
+<%- include ('../partials/navbar'); %>
+
+	<h1 class="page_title pt-2">Transaction Information</h1>
+	<div class="row px-4">
+		<div class="card_content">
+
+			<div class="row stripe_1 block_info">
+				<div class="col-lg-6">
+					<p class="title">Client Name:</p>
+				</div>
+				<div class="col-lg-6">
+					<p class="info">
+						<% if (transaction["client"]) { %>
+							<% if (transaction["client"].organization_name) { %>
+								<a href="/clients/<%= transaction["client"]._id %>"><%= transaction["client"].organization_name %></a>
+							<% } else { %>
+								<a href="/clients/<%= transaction["client"]._id %>">
+									<%= transaction["client"].last_name %>, 
+									<% if (transaction["client"].middle_name) { %>
+									<%= transaction["client"].middle_name %> 
+									<% } %>
+									<%= transaction["client"].first_name %> 
+								</a>	
+							<% } %>	
+						<% } else { %>
+							[deleted]
+						<% } %>	
+					</p> 
+				</div>
+			</div>
+			<div class="row stripe_2 block_info">
+				<div class="col-lg-6">
+					<p class="title">Job Name:</p>
+				</div>
+				<div class="col-lg-6">
+					<% if (transaction["job"]) { %>
+						<p class="info"><a href="/jobs/<%= transaction["job"]._id %>"><%= transaction["job"].job_name %></a></p> 
+					<% } else { %>
+						<p class="info"><a href="/jobs/<%= transaction["job"]._id %>"><p class="info">[deleted]</p>>a</p>
+					<% } %>	
+				</div>
+			</div>
+			<div class="row stripe_1 block_info">
+				<div class="col-lg-6">
+					<p class="title">Name on Transaction:</p>
+				</div>
+				<div class="col-lg-6">
+					<p class="info">
+						<% if (transaction["transaction_info"].associated_name) { %>
+							<p class="info"><%= transaction["transaction_info"].associated_name %></p> 
+						<% } %>
+					</p> 
+				</div>
+			</div>
+			<div class="row stripe_2 block_info">
+				<div class="col-lg-6">
+					<p class="title">Amount:</p>
+				</div>
+				<div class="col-lg-6">
+					<p class="info">$<%= price %></p> 
+				</div>
+			</div>
+			<div class="row stripe_1 block_info">
+				<div class="col-lg-6">
+					<p class="title">Payment Method:</p>
+				</div>
+				<div class="col-lg-6">
+					<p class="info"><%= transaction["transaction_info"]["method"] %></p> 
+				</div>
+			</div>
+			<div class="row stripe_2 block_info">
+				<div class="col-lg-6">
+					<p class="title">Check/Receipt Number:</p>
+				</div>
+				<div class="col-lg-6">
+					<p class="info"><%= transaction["transaction_info"]["receipt_number"] %></p> 
+				</div>
+			</div>
+			<div class="row stripe_1 block_info">
+				<div class="col-lg-6">
+					<p class="title">Deposited Date:</p>
+				</div>
+				<div class="col-lg-6">
+					<p class="info"><%= transaction["transaction_info"]["date"].toDateString() %></p> 
+					<p class="info"><strong>Deposited by: </strong>
+						<% if (transaction["deposited_by_user"]) { %>
+							<%= transaction["deposited_by_user"].username %>
+						<% } else { %>
+							[deleted]
+						<% } %>	
+					</p>
+				</div>
+			</div>
+			<div class="row stripe_2 block_info">
+				<div class="col-lg-6">
+					<p class="title">Date Added:</p>
+				</div>
+				<div class="col-lg-6">
+					<p class="info"><%= transaction.date_added.toDateString() %></p> 
+				</div>
+			</div>
+			<div class="row stripe_1 block_info">
+				<div class="col-lg-6">
+					<p class="title">Billing Address:</p>
+				</div>
+				<div class="col-lg-6">
+					<p><%= transaction["billing_address"]["street"] %></p>
+					<p><%= transaction["billing_address"]["city"] %>, <%= transaction["billing_address"]["state"] %> <%= transaction["billing_address"]["zip"] %></p>
+				</div>
+			</div>
+			<div class="row stripe_2 block_info">
+				<div class="col-lg-6">
+					<p class="title">Notes:</p>
+				</div>
+				<div class="col-lg-6">
+					<p><%= transaction.notes %></p>
+				</div>
+			</div>
+			<div class="row pt-3">
+				<div class="col-lg-6">
+					<% if (currentUser.user_permissions === "Administrator") { %>
+						<form action="/transactions/<%= transaction._id %>/edit" method="GET">
+							<button class="edit zoom">Edit Transaction</button>
+						</form>	
+					<% } %>
+				</div>
+				<div class="col-lg-6">
+					<% if (currentUser.user_permissions === "Administrator") { %>	
+						<form action="/transactions/<%= transaction._id %>?_method=DELETE" method="POST" onclick="return confirm('Are you sure you want to delete this transaction?');">
+							<button class="delete zoom">Delete Transaction</button>
+						</form>	
+					<% } %>	
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+<%- include ('../partials/footer'); %>

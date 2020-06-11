@@ -1,0 +1,27 @@
+
+#my_account {
+    max-height: 100%;
+    border: 1px solid black;
+    padding: 25px;
+    margin: auto;
+    text-align: left;
+    color: black;
+    width: 50%;
+    position: relative;
+    top: 50%;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+  }
+
+  #edit_info {
+    max-height: 100%;
+    border: 1px solid black;
+    padding: 25px;
+    margin: auto;
+    margin-top: 2rem;
+    text-align: left;
+    color: black;
+    width: 50%;
+    position: relative;
+    top: 50%;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+  }

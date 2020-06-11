@@ -1,0 +1,87 @@
+<%- include ('partials/header'); %>
+<title>Dashboard</title>
+<link rel="stylesheet" type="text/css" href="/styles/dashboard.css">
+<%- include ('partials/navbar'); %>
+
+
+  <h1 class="dashboard page_title pt-2">Dashboard</h1>
+      <div class="row">
+		  
+		  	<!-- card -->
+			<div class="col-12 col-lg-6 col-xl-3 card_padding">            
+			  <div class="tickets card custom_card mb-6 box-shadow">
+				<div class="card-body">
+					  <i class="icon fas fa-list fa-7x"></i>
+					  <div class="card_text">
+						  <p class="card-title">Tickets</p>
+						  <p>Total number of outstanding tickets: </p>
+						  <p class="card_text_bottom"><%= outstanding_tickets %></p>
+					  </div>	  
+				</div>
+			  </div>   
+			</div>
+
+			<!-- card -->
+			<div class="col-12 col-lg-6 col-xl-3 card_padding">            
+			  <div class="clients card custom_card mb-6 box-shadow">
+				<div class="card-body">
+					  <i class="fas fa-user-tie fa-7x"></i>
+					  <div class="card_text">
+						<p class="card-title">Clients</p>
+					  	<p>Clients Added This Month:</p>
+						<p class="card_text_bottom"><%= clients_added %></p>
+					  </div>
+				</div>
+			  </div>   
+			</div>
+
+			<!-- card -->
+			<div class="col-12 col-lg-6 col-xl-3 card_padding">            
+			  <div class="jobs card custom_card mb-6 box-shadow">
+				<div class="card-body">
+				      <i class="icon fas fa-people-carry fa-7x"></i>
+					  <div class="card_text">
+					     <p class="card-title">Jobs</p>
+					 	 <p>Jobs Added This Month:</p>
+						 <p class="card_text_bottom"><%= jobs_added %></p>
+					  </div>
+				</div>
+			  </div>   
+			</div>
+
+			<!-- card -->
+			<div class="col-12 col-lg-6 col-xl-3 card_padding">            
+			  <div class="transactions card custom_card mb-6 box-shadow">
+				<div class="card-body">
+					  <i class="fas fa-money-check-alt fa-7x"></i>
+					  <div class="card_text">
+						  <p class="card-title">Transactions</p>
+						  <p>Income YTD:</p>
+						  <p class="card_text_bottom">$<%= ytd_income %></p>
+					  </div>
+				</div>
+			  </div>   
+			</div> 
+		  </div>
+
+		  <div class="row">
+				<div class="col-lg-6">
+							<div class="pb-5">
+								<div class="card custom_card">
+									<canvas data-transactions="<%= transaction_data %> "id="myTransactionsChart"></canvas>
+								</div>			  
+							</div>		  				
+				</div>
+
+				<div class="col-lg-6">
+							<div class="pb-5">
+								<div class="card custom_card">
+									<canvas data-jobs="<%= jobs_data %> "id="myJobsChart"></canvas>
+								</div>			  
+							</div>		  				
+				</div>
+		  </div>				
+
+<%- include ('../public/scripts/charts'); %>
+
+<%- include ('partials/footer'); %>

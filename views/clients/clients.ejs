@@ -1,0 +1,57 @@
+<%- include ('../partials/header'); %>
+<title>Clients</title>
+<%- include ('../partials/navbar'); %>
+
+
+  <h1 class="page_title pt-2">Clients</h1>
+
+
+  <div class="item_table">
+    
+	  <a href="/clients/add">Add New Client</a>
+      <table class="displayClients stripe" id="myTable">
+          <thead>
+              <tr>
+                <th>Organization/Client Last Name:</th>
+                <th>Contact Name:</th>
+                <th>Jobs:</th>
+				<th>Transactions:</th>
+				<th>Is Active:</th>
+              </tr>
+          </thead>
+
+          <tbody class="tableData">
+			  
+				<% clients.forEach(function(client){ %>
+				  	
+						<tr>
+							<% if (client.organization_name) { %>
+							<td><a href="/clients/<%= client._id %>"><%= client.organization_name %></a></td>
+								<% if (client.last_name) { %>
+									<td><%= client.last_name %>, <%= client.first_name %> <%= client.middle_name %></td>
+								<% } else { %>	
+									<td></td>
+								<% } %>	
+							<% } else { %>
+							<td><a href="/clients/<%= client._id %>"><%= client.last_name %></a></td>
+							<td><%= client.last_name %>, <%= client.first_name %> <%= client.middle_name %></td>
+							<% } %>
+							<td><%= client["jobs"].length %></td>
+							<td><%= client["transactions"].length %></td>
+							<td>
+								<% if (client.active) { %>
+									Yes
+								<% } else { %>
+									No
+								<% } %>	
+							</td>									
+						</tr>
+
+			  	<% }) %>
+			  
+          </tbody>
+
+        </table>
+  </div>
+
+<%- include ('../partials/footer'); %>

@@ -1,0 +1,43 @@
+<%- include ('../partials/header'); %>
+<title>Users</title>
+<%- include ('../partials/navbar'); %>
+
+
+  <h1 class="page_title pt-2">Users</h1>
+
+
+  <div class="item_table">
+    
+    <a href="/users/add">Create New User</a><span class="px-3"><a href="/users/user_permissions">User Permissions</a></span>
+    
+      <table class="displayUsers stripe" id="myTable">
+          <thead>
+              <tr>
+                <th>Username:</th>
+                <th>First Name:</th>
+                <th>Middle Name:</th>
+				<th>Last Name:</th>
+                <th>User Permissions:</th>
+              </tr>
+          </thead>
+
+          <tbody class="tableData">
+			  
+				<% users.forEach(function(user){ %>
+				  	
+						<tr>
+							<td><a href="/users/<%= user._id %>"><%= user.username %></a></td>
+							<td><%= user.first_name %></td>
+							<td><%= user.middle_name %></td>
+							<td><%= user.last_name %></td>
+							<td><%= user.user_permissions %></td>
+						</tr>
+
+			  	<% }) %>
+			  
+          </tbody>
+
+        </table>
+  </div>
+
+<%- include ('../partials/footer'); %>

@@ -1,0 +1,38 @@
+<%- include ('../partials/header'); %>
+<title>Complete Ticket</title>
+<%- include ('../partials/navbar'); %>
+<link rel="stylesheet" type="text/css" href="/styles/login.css">
+	
+	<div>
+            <div class="container">
+                <h2 class="py-2 page_title">Complete Ticket: <%= ticket.ticket_name %></h2>
+                <form action="/tickets/complete/<%= ticket._id %>?_method=PUT" class="form_content" method="POST">
+					<div class="form-group">
+						<p>Completed By User:</p>
+						<select class="form-control" name="ticket[completed_by_user]">
+							<% if (ticket.assigned_user) { %>
+								<option value="<%= ticket["assigned_user"]._id %>"><%= ticket["assigned_user"].username %></option>
+							<% } %>	
+							<% users.forEach(function(user){ %>
+								<% if (user.username != "Admin") { %>
+								  <option value="<%= user._id %>"><%= user.username %></option>
+								<% } %>
+							<% }) %>
+						</select>
+                    </div>
+						<div class="form-group">
+							<input type="date" class="form-control" name="ticket[completed_date]" placeholder="Completed Date" required>
+						</div>
+					
+                    <div class="form-group">
+						<p>Completed Description:</p>
+                        <textarea name="ticket[completed_description]"></textarea>
+                    </div> 					
+
+                    <button class="button zoom" type="submit" onclick="return confirm('Are you sure you want to complete this ticket?');">Submit</button>
+                </form>
+            </div>
+        </div>
+
+
+<%- include ('../partials/footer'); %>

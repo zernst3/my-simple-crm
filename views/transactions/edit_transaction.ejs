@@ -1,0 +1,153 @@
+<%- include ('../partials/header'); %>
+<title>Edit Transaction</title>
+<%- include ('../partials/navbar'); %>
+<link rel="stylesheet" type="text/css" href="/styles/login.css">
+	
+	<div>
+            <div class="container">
+                <h2 class="py-2 page_title">Edit Transaction:</h2>
+                <form action="/transactions/<%= transaction._id %>?_method=PUT" class="form_content" method="POST">
+					<div class="row">
+						<div class="col-lg-4">
+							<div class="form-group">
+								<p>Associated Job:</p>
+								<select class="form-control dropdown_search" name="transaction[job]">
+									<% if (transaction["job"]) { %>
+										<option value="<%= transaction["job"]._id %>">
+											<%= transaction["job"].job_name %>
+										</option>
+									<% } else { %>
+										<option value="[deleted]">
+											[deleted]
+										</option>
+									<% } %>	
+									<% jobs.forEach(function(job){ %>
+									<option value="<%= job._id %>">
+										<%= job.job_name %>
+									</option>
+									<% }); %>
+								</select>
+							</div>							
+						</div>
+						<div class="col-lg-4">
+							<div class="form-group">
+								<p>Associated Client:</p>
+								<select class="form-control dropdown_search" name="transaction[client]">
+									<% if (transaction["client"]) { %>
+									  <option value="<%= transaction["client"]._id %>">
+										  <% if (transaction["client"].organization_name) { %>									  
+										  <%= transaction["client"].organization_name %>
+										  <% } else { %>
+										  <%= transaction["client"].last_name %>, <%= transaction["client"].first_name %> <%= transaction["client"].middle_name %>
+										  <% }; %>
+									  </option>
+									<% } else { %>
+										<option value="[deleted]">
+											[deleted]
+										</option>
+									<% } %>	
+									<% clients.forEach(function(client){ %>
+									  <option value="<%= client._id %>">
+										  <% if (client.organization_name) { %>
+										  <%= client.organization_name %>
+										  <% } else { %>
+										  <%= client.last_name %>, <%= client.first_name %> <%= client.middle_name %>
+										  <% }; %>
+									   </option>
+									<% }); %>
+								</select>
+							</div>									
+						</div>
+						<div class="col-lg-4">
+							<div class="form-group">
+								<p>Deposited By User:</p>
+								<select class="form-control dropdown_search" name="transaction[deposited_by_user]">
+									<% if (transaction.deposited_by_user) { %>
+									  <option value="<%= transaction["deposited_by_user"]._id %>">
+										  <%= transaction["deposited_by_user"].username %>
+									  </option>
+									<% } else { %>
+										<option value="[deleted]">
+											[deleted]
+										</option> 
+									<% } %>	
+									<% users.forEach(function(user){ %>
+									  <option value="<%= user._id %>"><%= user.username %></option>
+									<% }) %>
+								</select>
+							</div>
+						</div>
+					</div>					
+					
+					<p>Transaction Information:</p>  	
+					<div class="row">
+						
+						<div class="col-lg-4 form-group">
+							<p>Transaction Amount:</p>
+							<span>$</span>
+							<div class="billing">
+								<input autocomplete="off" autofocus class="form-control" name="transaction[transaction_info][amount]" value="<%= transaction["transaction_info"]["amount"] %>" type="number">
+							</div>
+							<label for="transaction[transaction_info][amount]">Format: 0000.00</label>
+						</div>
+						
+						<div class="col-lg-4">
+							<div class="form-group">
+								<p>Payment Method:</p>
+								<select class="form-control dropdown_search" name="transaction[transaction_info][method]">
+									<option value="<%= transaction["transaction_info"]["method"] %>"><%= transaction["transaction_info"]["method"] %></option>
+									<option value="Cash">Cash</option>
+									<option value="Check">Check</option>
+									<option value="Credit Card">Credit Card</option>
+									<option value="Wire Transfer">Wire Transfer</option>	
+									<option value="Other">Other</option>	
+								</select>
+							</div>							
+						</div>
+						<div class="col-lg-4">
+							<p>Deposit Date:</p>
+							<div class="form-group">
+								<input type="date" class="form-control" name="transaction[transaction_info][date]" value="<%= deposit_date %>" required>
+							</div>							
+						</div>
+					</div>	
+					
+					<div class="row">
+						<div class="col-lg-6 form-group">
+							<p>Check/Receipt Number:</p>
+							<input autocomplete="off" autofocus class="form-control" name="transaction[transaction_info][receipt_number]" value="<%= transaction["transaction_info"]["receipt_number"] %>" type="text">
+						</div>
+						<div class="col-lg-6 form-group">
+							<p>Name on Transaction:</p>
+							<input autocomplete="off" autofocus class="form-control" name="transaction[transaction_info][associated_name]" value="<%= transaction["transaction_info"]["associated_name"] %>" placeholder="ex. check/credit card name" type="text">
+						</div>
+					</div>
+
+					<p>Billing Address:</p>
+					<div class="form-group">
+                        <input autocomplete="off" autofocus class="form-control" name="transaction[billing_address][street]" value="<%= transaction["billing_address"]["street"] %>" type="text">
+                    </div>    	
+					<div class="row">
+						<div class="col-lg-4 form-group">
+							<input autocomplete="off" autofocus class="form-control" name="transaction[billing_address][city]" value="<%= transaction["billing_address"]["city"] %>" type="text">
+						</div>
+						<div class="col-lg-4 form-group">
+							<input autocomplete="off" autofocus class="form-control" name="transaction[billing_address][state]" value="<%= transaction["billing_address"]["state"] %>" type="text">
+						</div>
+						<div class="col-lg-4 form-group">
+							<input autocomplete="off" autofocus class="form-control" name="transaction[billing_address][zip]" value="<%= transaction["billing_address"]["zip"] %>" type="text">
+						</div>
+					</div>					
+					
+                    <div class="form-group">
+						<p>Notes:</p>
+                        <textarea name="transaction[notes]"><%= transaction.notes %></textarea>
+                    </div> 					
+
+                    <button class="button zoom" type="submit">Submit</button>
+                </form>
+            </div>
+        </div>
+
+
+<%- include ('../partials/footer'); %>

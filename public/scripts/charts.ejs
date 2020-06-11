@@ -1,0 +1,76 @@
+<script>
+    let myTransactionsChart = document.getElementById("myTransactionsChart").getContext('2d');
+    transaction_data = myTransactionsChart.canvas.dataset.transactions;
+    
+    let transactionsChart = new Chart(myTransactionsChart, {
+        type: 'bar',
+        data: {
+            labels: ['Jan.', 'Feb.', 'March', 'April', 'May', 'June', 'July', 'Aug.', 'Sept.', 'Oct.', 'Nov.', 'Dec.'],
+            datasets: [{
+                label: 'Monthy Income',
+                backgroundColor: 'rgb(84, 84, 84)',
+                borderColor: 'rgb(84, 84, 84)',
+                data: [<%= transaction_data %>]
+            }]
+        },
+        
+    // Source: https://stackoverflow.com/questions/36918887/chart-js-2-0-formatting-y-axis-with-currency-and-thousands-separator
+        
+        options: {
+            tooltips: {enabled: false},
+            hover: {mode: null},
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true,
+                        stepSize: 5000,
+    
+                        // Return an empty string to draw the tick line but hide the tick label
+                        // Return `null` or `undefined` to hide the tick line entirely
+                        userCallback: function(value, index, values) {
+                            // Convert the number to a string and splite the string every 3 charaters from the end
+                            value = value.toString();
+                            value = value.split(/(?=(?:...)*$)/);
+    
+                            // Convert the array to a string and format the output
+                            value = value.join(',');
+                            return '$' + value;
+                        }
+                    }
+                }]
+            }
+        }
+    });
+    </script>
+    
+    <script>
+        let myJobsChart = document.getElementById("myJobsChart").getContext('2d');
+        jobs_data = myJobsChart.canvas.dataset.jobs;
+        
+        let jobsChart = new Chart(myJobsChart, {
+            type: 'bar',
+            data: {
+                labels: ['Jan.', 'Feb.', 'March', 'April', 'May', 'June', 'July', 'Aug.', 'Sept.', 'Oct.', 'Nov.', 'Dec.'],
+                datasets: [{
+                    label: 'Jobs Starting',
+                    backgroundColor: 'rgb(84, 84, 84)',
+                    borderColor: 'rgb(84, 84, 84)',
+                    data: [<%= jobs_data %>]
+                }]
+            },
+            options: {
+                tooltips: {enabled: false},
+            hover: {mode: null},
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true,
+                        stepSize: 4
+                    }
+                }]
+            }
+            }
+        });
+        </script>
+    
+    <script src="/scripts/chart_dropdown.js"></script>	

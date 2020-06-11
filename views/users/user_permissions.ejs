@@ -1,0 +1,156 @@
+<%- include ('../partials/header'); %>
+<title>Edit User</title>
+<%- include ('../partials/navbar'); %>
+<link rel="stylesheet" type="text/css" href="/styles/information_card.css">
+
+<div class="container-fluid">
+    <h1 class="dashboard page_title pt-2">User Permissions</h1>
+    <div class="row">
+        
+            <div class="col-xl-4">
+                <div class="card_content">
+                    <h4>Users:</h4>
+                    <div class="row stripe_1 block_info">
+                        <div class="col-lg-6">
+                            <p class="title">Users:</p>
+                        </div>
+                        <div class="col-lg-6">
+                            <p>Can View Account Information</p>
+                            <p>Can Change Password</p>
+                        </div>
+                    </div>
+                    <div class="row stripe_2 block_info">
+                        <div class="col-lg-6">
+                            <p class="title">Tickets:</p>
+                        </div>
+                        <div class="col-lg-6">
+                            <p>Can View Tickets</p>
+                            <p>Can Create Tickets</p>
+                            <p>Can Complete Tickets</p>
+                        </div>
+                    </div>
+                    <div class="row stripe_1 block_info">
+                        <div class="col-lg-6">
+                            <p class="title">Clients:</p>
+                        </div>
+                        <div class="col-lg-6">
+                            <p>Can View Clients</p>
+                                <p>Can Create Clients</p>
+                        </div>
+                    </div>
+                    <div class="row stripe_2 block_info">
+                        <div class="col-lg-6">
+                            <p class="title">Jobs:</p>
+                        </div>
+                        <div class="col-lg-6">
+                            <p>Can View Jobs</p>
+                            <p>Can Create Jobs</p>
+                        </div>
+                    </div>
+                    <div class="row stripe_1 block_info">
+                        <div class="col-lg-6">
+                            <p class="title">Transactions:</p>
+                        </div>
+                        <div class="col-lg-6">
+                            <p>Can View Transactions</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+       
+        
+        <div class="col-xl-4">
+            <div class="card_content">
+                <h4>Managers:</h4>
+                
+                <div class="row stripe_1 block_info">
+                    <div class="col-12">
+                        <p class="title">All User Permissions and:</p>
+                    </div>
+                </div>
+                <div class="row stripe_2 block_info">
+                    <div class="col-lg-6">
+                        <p class="title">Tickets:</p>
+                    </div>
+                    <div class="col-lg-6">
+                        <p>Can Edit Tickets</p>
+                    </div>
+                </div>
+                <div class="row stripe_1 block_info">
+                    <div class="col-lg-6">
+                        <p class="title">Clients:</p>
+                    </div>
+                    <div class="col-lg-6">
+                        <p>Can Edit Clients</p>
+                    </div>
+                </div>
+                <div class="row stripe_2 block_info">
+                    <div class="col-lg-6">
+                        <p class="title">Jobs:</p>
+                    </div>
+                    <div class="col-lg-6">
+                        <p>Can Edit Jobs</p>
+                    </div>
+                </div>
+                <div class="row stripe_1 block_info">
+                    <div class="col-lg-6">
+                        <p class="title">Transactions:</p>
+                    </div>
+                    <div class="col-lg-6">
+                        <p>Can Add Transactions</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-4">
+            <div class="card_content">
+                <h4>Aministrator:</h4>
+                
+                <div class="row stripe_1 block_info">
+                    <div class="col-12">
+                        <p class="title">All Manager Permissions and:</p>
+                    </div>
+                </div>
+                <div class="row stripe_2 block_info">
+                    <div class="col-12">
+                        <p class="title">Can Perform All User Administration</p>
+                    </div>
+                </div>
+                <div class="row stripe_1 block_info">
+                    <div class="col-lg-6">
+                        <p class="title">Tickets:</p>
+                    </div>
+                    <div class="col-lg-6">
+                        <p>Can Delete Tickets</p>
+                    </div>
+                </div>
+                <div class="row stripe_2 block_info">
+                    <div class="col-lg-6">
+                        <p class="title">Clients:</p>
+                    </div>
+                    <div class="col-lg-6">
+                        <p>Can Delete Clients</p>
+                    </div>
+                </div>
+                <div class="row stripe_1 block_info">
+                    <div class="col-lg-6">
+                        <p class="title">Jobs:</p>
+                    </div>
+                    <div class="col-lg-6">
+                        <p>Can Delete Jobs</p>
+                    </div>
+                </div>
+                <div class="row stripe_2 block_info">
+                    <div class="col-lg-6">
+                        <p class="title">Transactions:</p>
+                    </div>
+                    <div class="col-lg-6">
+                        <p>Can Edit Transactions</p>
+                        <p>Can Delete Transactions</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<%- include ('../partials/footer'); %>

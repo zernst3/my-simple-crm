@@ -1,0 +1,168 @@
+<%- include ('../partials/header'); %>
+<title>Job Information</title>
+<link rel="stylesheet" type="text/css" href="/styles/information_card.css">
+<%- include ('../partials/navbar'); %>
+
+	<h1 class="page_title pt-2">Job Information</h1>
+	<div class="row px-4">
+		<div class="col-xl-6">
+			<div class="card_content">
+				<div class="row stripe_1 block_info">
+					<div class="col-lg-6">
+						<p class="title">Job Name:</p>
+					</div>
+					<div class="col-lg-6">
+						<p class="info"><%= job.job_name %></p> 
+					</div>
+				</div>
+				<div class="row stripe_2 block_info">
+					<div class="col-lg-6">
+						<p class="title">Associated Client:</p>
+					</div>
+					<div class="col-lg-6">
+						<% if (job.client) { %>
+							<% if (job["client"].organization_name) { %>
+							<p class="info"><a href="/clients/<%= job["client"]._id %>"><%= job["client"].organization_name %></a></p> 
+							<% } else { %>
+							<p class="info"><a href="/clients/<%= job["client"]._id %>"><%= job["client"].last_name, %> <%= job["client"].last_name %>, <%= job["client"].middle_name, %></a></p> 
+							<% } %>
+						<% } else { %>
+							<p class="info">[deleted]</p> 
+						<% } %>	
+					</div>
+				</div>
+				<div class="row stripe_1 block_info">
+					<div class="col-lg-6">
+						<p class="title">Date Added: </p>
+					</div>
+					<div class="col-lg-6">
+						<p><%= job.date_added.toDateString() %></p>
+							<% if (job.created_by) { %>
+							<p><strong>By User: </strong> 
+								<% if (job.created_by) { %>
+									<%= job["created_by"].username %>
+								<% } else { %>
+									[deleted]
+								<% } %>	
+								</p>
+							<% } %>
+					</div>
+				</div>
+				<div class="row stripe_2 block_info">
+					<div class="col-lg-6">
+						<p class="title">Start Date:</p>
+					</div>
+					<div class="col-lg-6">
+						<p class="info"><%= job.start_date.toDateString() %></p> 
+					</div>
+				</div>
+				<div class="row stripe_1 block_info">
+					<div class="col-lg-6">
+						<p class="title">End Date:</p>
+					</div>
+					<div class="col-lg-6">
+						<p class="info"><%= job.end_date.toDateString() %></p> 
+					</div>
+				</div>
+				<div class="row stripe_2 block_info">
+					<div class="col-lg-6">
+						<p class="title">Date Added: </p>
+					</div>
+					<div class="col-lg-6">
+						<p><%= job.date_added.toDateString() %></p>
+							<% if (job.created_by) { %>
+							<p><strong>By User: </strong> 
+								<% if (job.created_by) { %>
+									<%= job["created_by"].username %>
+								<% } else { %>
+									[deleted]
+								<% } %>	
+								</p>
+							<% } %>
+					</div>
+				</div>
+				<div class="row stripe_1 block_info">
+					<div class="col-lg-6">
+						<p class="title">Address: </p>
+					</div>
+					<div class="col-lg-6">
+						<p><%= job.street %></p>
+						<p><%= job.city %>, <%= job.state %> <%= job.zip %></p>
+					</div>
+				</div>
+				<div class="row stripe_2 block_info">
+					<div class="col-lg-6">
+						<p class="title">Billing Price:</p>
+					</div>
+					<div class="col-lg-6">
+						<p class="info">$<%= price %></p> 
+						
+					</div>
+				</div>
+				<div class="row stripe_1 block_info">
+					<div class="col-lg-6">
+						<p class="title">Balance: </p>
+					</div>
+					<div class="col-lg-6">
+						<p>$<%= job.balance %></p>
+					</div>
+				</div>
+				<div class="row stripe_2 block_info">
+					<div class="col-lg-6">
+						<p class="title">Description:</p>
+					</div>
+					<div class="col-lg-6">
+						<p>
+							<%= job.description %>
+						</p>						
+					</div>
+				</div>
+				<div class="row pt-3">
+					<div class="col-lg-6">
+						<% if (currentUser.user_permissions === "Manager" || currentUser.user_permissions === "Administrator") { %>
+							<form action="/jobs/<%= job._id %>/edit" method="GET">
+								<button class="edit zoom">Edit Job</button>
+							</form>	
+							<% } %>	
+					</div>
+					<div class="col-lg-6">
+						<% if (currentUser.user_permissions === "Administrator") { %>
+							<form action="/jobs/<%= job._id %>?_method=DELETE" method="POST" onclick="return confirm('Are you sure you want to delete this job?');">
+								<button class="delete zoom">Delete Job</button>
+							</form>	
+							<% } %>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-xl-6">
+			<div class="card_content">
+				<h3>Associated Transactions:</h3>
+				<table class="displayAssociatedTransactions">
+					  <thead>
+						  <tr>
+							<th>Deposited Date:</th>
+							<th>Transaction Amount:</th>
+						  </tr>
+					  </thead>
+
+					  <tbody class="tableData">
+							<% if (job.transactions) { %>
+								<% job["transactions"].forEach(function(transaction){ %>
+
+										<tr>
+											<td><a href="/transactions/<%= transaction._id %>"><%= transaction["transaction_info"].date.toDateString() %></a></td>
+											<td>$<%= transaction["transaction_info"].new_amount %></td>
+										</tr>
+
+								<% }) %>
+							<% } %>
+
+					  </tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+
+<%- include ('../partials/footer'); %>

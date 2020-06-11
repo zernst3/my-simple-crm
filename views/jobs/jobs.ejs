@@ -1,0 +1,48 @@
+<%- include ('../partials/header'); %>
+<title>Jobs</title>
+<%- include ('../partials/navbar'); %>
+
+
+  <h1 class="page_title pt-2">Jobs</h1>
+
+
+  <div class="item_table">
+    
+	  <a href="/jobs/add">Add New Job</a>
+      <table class="displayJobs stripe">
+          <thead>
+              <tr>
+                <th>Job Name:</th>
+                <th>Start Date:</th>
+                <th>End Date:</th>
+				<th>Associated Client:</th>
+              </tr>
+          </thead>
+
+          <tbody class="tableData">
+			  
+				<% jobs.forEach(function(job){ %>
+				  	
+						<tr>
+							<td><a href="/jobs/<%= job._id %>"><%= job.job_name %></a></td>
+							<td><%= job.start_date.toDateString() %></td>
+							<td><%= job.end_date.toDateString() %></td>
+							<% if (job["client"]) { %>
+								<% if (job["client"].organization_name) { %>
+								<td><%= job["client"].organization_name %></td>
+								<% } else { %>
+								<td><%= job["client"].last_name, %> <%= job["client"].last_name %>, <%= job["client"].middle_name, %></td>
+								<% } %>
+							<% } else { %>
+								<td>[deleted]</td>
+							<% } %>
+						</tr>
+
+			  	<% }) %>
+			  
+          </tbody>
+
+        </table>
+  </div>
+
+<%- include ('../partials/footer'); %>

@@ -1,0 +1,73 @@
+<%- include ('../partials/header'); %>
+<title>User Information</title>
+<link rel="stylesheet" type="text/css" href="/styles/information_card.css">
+<%- include ('../partials/navbar'); %>
+
+	<h1 class="page_title pt-2">User Information</h1>
+	<div class="card_content">
+		<div class="block_info">
+			<p class="title">Name:</p>
+			<p class="info"><%= user.first_name %> <%= user.middle_name %> <%= user.last_name %></p> 
+		</div>
+		<div class="row">
+			<div class="col-md-6">
+ 				<div class="block_info">
+					<p class="title">Username:</p>
+					<p class="info"><%= user.username %></p> 
+				</div> 
+			</div>
+			<div class="col-md-6">
+				<div class="block_info">		 
+					<p class="title">User Permissions:</p>
+					<p class="info"><%= user.user_permissions %></p>
+				</div>
+			</div>
+		</div>			
+		<div class="row">
+			<div class="col-md-6">
+				<div class="block_info">		 
+					<p class="title">Email Address:</p>
+					<p class="info"><%= user.email_address %></p> 
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="block_info">
+					<p class="title">Phone Number:</p>
+					<p class="info"><%= user.phone_number %></p> 
+				</div>		
+			</div>			
+		</div>
+		<div class="row">
+			<div class="col-md-6">
+ 				<div class="block_info">
+					<p class="title">Address: </p>
+					<div class="info">
+						<p><%= user.street %></p>
+						<p> <% if (user.city) { %>
+							<%= user.city %>, 
+							<% } %>							
+							<%= user.state %> <%= user.zip %></p>
+					</div>
+				</div> 
+			</div>
+			<div class="col-md-6">
+				<div class="block_info">
+					<p class="title">Created:</p>
+					<p class="info"><%= user.date_added.toDateString() %></p>	
+				</div>		
+			</div>
+		</div>	
+			<% if (currentUser.user_permissions === "Administrator" || currentUser.username === user.username) { %>
+				<form action="/users/<%= user._id %>/edit" method="GET">
+					<button class="edit zoom">Edit User</button>
+				</form>	
+				<form action="/users/<%= user._id %>/edit_password" method="GET">
+					<button class="edit zoom">Change Password</button>
+				</form>	
+				<form action="/users/<%= user._id %>?_method=DELETE" method="POST" onclick="return confirm('Are you sure you want to delete this user?');">
+					<button class="delete zoom">Delete User</button>
+				</form>	
+			<% } %>	
+	</div>
+
+<%- include ('../partials/footer'); %>

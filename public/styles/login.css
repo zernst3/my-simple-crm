@@ -1,0 +1,41 @@
+form {
+	max-width: 65%;
+	margin: auto;
+}
+
+.form-control {
+    /* width: 65%; */
+    margin: auto;
+}
+
+#register {
+    padding-top: 1rem;
+}
+
+a {
+    color: rgb(8, 7, 105);
+}
+
+.button {
+    font-size: 1.5rem;
+    color: white;
+    background:rgba(63, 144, 158, 0.4);
+    padding: 10px;
+    border: 2px solid white;
+    border-radius: 10px;
+}
+
+.top_margin {
+	  margin-top: 57px;
+}
+
+
+
+p {
+	margin-top: 0rem;
+	margin-bottom: 0.5rem;
+}
+
+.button {
+	margin-bottom: 1rem;
+}

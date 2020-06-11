@@ -1,0 +1,48 @@
+<%- include ('../partials/header'); %>
+<title>Add Ticket</title>
+<%- include ('../partials/navbar'); %>
+<link rel="stylesheet" type="text/css" href="/styles/login.css">
+	
+	<div>
+            <div class="container">
+                <h2 class="py-2 page_title">Add Ticket:</h2>
+                <form action="/tickets" class="form_content" method="POST">
+					<div class="form-group">
+                        <input autocomplete="off" autofocus class="form-control" name="ticket[ticket_name]" placeholder="Ticket Name" type="text" required>
+                    </div> 
+					<div class="form-group">
+						<p>Created By User:</p>
+						<select class="form-control dropdown_search" name="ticket[created_by]">
+							<% users.forEach(function(user){ %>
+								<% if (user.username != "Admin") { %>
+									<option value="<%= user._id %>"><%= user.username %></option>
+								<% } %>
+							<% }) %>
+						</select>
+                    </div>
+					<div class="form-group">
+						<p>Assign to User:</p>
+						<select class="form-control dropdown_search" name="ticket[assigned_user]">
+							<% users.forEach(function(user){ %>
+							  <option value="<%= user._id %>"><%= user.username %></option>
+							<% }) %>
+						</select>
+                    </div>
+                    <div class="form-group">
+						<p>Due Date:</p>
+						<input type="date" class="form-control" name="ticket[due_date]" required>
+                    </div>
+					
+					
+                    <div class="form-group">
+						<p>Ticket Description:</p>
+                        <textarea name="ticket[description]"></textarea>
+                    </div> 					
+
+                    <button class="button zoom" type="submit">Submit</button>
+                </form>
+            </div>
+        </div>
+
+
+<%- include ('../partials/footer'); %>

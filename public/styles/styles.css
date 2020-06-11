@@ -1,0 +1,108 @@
+body {
+    background-color: rgb(241, 241, 241);
+}
+
+.zoom {
+    transition: transform .2s;
+
+  }
+  
+.zoom:hover {
+    transform: scale(1.1);
+    z-index:1;
+}
+
+
+.software_name {
+    color: white;
+}  
+
+body {
+    font-family: 'Quattrocento Sans', sans-serif;
+}
+
+.billing {
+	display: inline-block;
+}
+
+hr {
+	width: 90%;
+    border: 0;
+    height: 1px;
+    background: #333;
+    background-image: linear-gradient(to right, #ccc, #333, #ccc);
+}
+
+/* ==================Buttons================== */
+
+.edit {
+    display: inline-block;
+    background-color: rgba(62, 91, 112);
+    border: 1px solid transparent;
+    border-radius: 50rem;
+    margin: 0.5rem;
+    margin-left: 0rem;
+    padding: 10px;
+    box-shadow: 0 .125rem .25rem rgba(0,0,0,.075)!important;
+    font-family: inherit;
+    font-weight: bold;
+    color: white;
+    width: 200px;
+}
+
+.edit_complete {
+    display: inline-block;
+    background-color: rgba(62, 91, 112);
+    border: 1px solid transparent;
+    border-radius: 50rem;
+    margin: 0.5rem;
+    margin-left: 0rem;
+    padding: 10px;
+    box-shadow: 0 .125rem .25rem rgba(0,0,0,.075)!important;
+    font-family: inherit;
+    font-weight: bold;
+    color: white;
+    width: 200px;
+}
+
+.delete {
+    display: inline-block;
+    background-color: rgb(141, 72, 72);
+    border: 1px solid transparent;
+    border-radius: 50rem;
+    margin: 0.5rem;
+    margin-left: 0rem;
+    padding: 10px;
+    box-shadow: 0 .125rem .25rem rgba(0,0,0,.075)!important;
+    font-family: inherit;
+    font-weight: bold;
+    color: white;
+    width: 200px;
+}
+
+.form_content {
+    max-height: 100%;
+    border: 1px solid black;
+    padding: 25px;
+    margin: auto;
+    text-align: center;
+    color: black;
+    max-width: 750px;
+    position: relative;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+  }
+
+  label {
+      margin-left: 0;
+      font-size: 0.8em;
+  }
+
+  textarea {
+    height: 150px;
+    width: 100%;
+}
+
+.alert {
+    text-align: center;
+    font-weight: bold;
+}
