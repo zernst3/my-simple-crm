@@ -122,6 +122,6 @@ app.get("*", isLoggedIn, function(req, res){
 
 // =======================Server
 
-app.listen(8080, function() { 
+app.listen(process.env.PORT || 5000, function() { 
   console.log('Server listening on port 8080'); 
 });
