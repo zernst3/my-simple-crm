@@ -29,7 +29,18 @@ app.use(bodyParser.urlencoded({extended: true}));
 // use methodOverride
 app.use(methodOverride("_method"));
 
-mongoose.connect("mongodb://localhost/crm_app");
+// mongoose.connect("mongodb://localhost/crm_app");
+
+require('dotenv').config();
+
+mongoose.connect(process.env.MongoDB, {
+	userNewUrlParser: true,
+	useCreateIndex: true,
+}).then (() => {
+	console.log("Connected to the database");
+}).catch(err => {
+	console.log("Error", err.message);
+});
 
 // Optional. Use this if you create a lot of connections and don't want
 // to copy/paste `{ useNewUrlParser: true }`.

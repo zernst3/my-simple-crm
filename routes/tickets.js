@@ -19,6 +19,7 @@ router.use(function(req, res, next){
 });
 
 require('dotenv').config();
+
 const nodemailer = require('nodemailer');
 
 // 1. Transporter
