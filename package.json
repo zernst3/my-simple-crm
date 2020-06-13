@@ -1,5 +1,5 @@
 {
-  "name": "finalprojectinventory",
+  "name": "my_simple_crm",
   "version": "1.0.0",
   "description": "A simple Inventory web application.",
   "main": "app.js",
