@@ -122,6 +122,6 @@ app.get("*", isLoggedIn, function(req, res){
 
 // =======================Server
 
-app.listen(port, function() { 
-  console.log('Server has started'); 
+app.listen(8080, function() { 
+  console.log('Server listening on port 8080'); 
 });
