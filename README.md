@@ -21,6 +21,7 @@ This project was created with
     * Node.js: 12.18.0
     * Body-parser: 1.19.0
     * Connect-Flash: 0.1.1
+    * Connect-mongodb-session: 2.3.3
     * Dotenv: 8.2.0
     * ejs: 3.1.3
     * Express: 4.17.1

@@ -48,11 +48,28 @@ mongoose.set('useNewUrlParser', true);
 mongoose.set('useUnifiedTopology', true);
 mongoose.set('useFindAndModify', false);
 
+// Mongoose Session
+const session = require("express-session");
+const MongoDBStore = require("connect-mongodb-session")(session);
+const store = new MongoDBStore({
+	uri: process.env.MongoDB,
+	collection: 'mySessions'
+});
+
+// Catch errors
+store.on('error', function(error) {
+	console.log(error);
+  });
+
 // Use Express Session
-app.use(require("express-session")({
+app.use(session ({
 	secret: "You my friend, I will defend, and if we change, well, I love you anyway",
-	resave: false,
-	saveUninitialized: false
+	cookie: {
+		maxAge: 1000 * 60 * 60 * 24 * 7 // 1 week
+	},
+	store: store,
+	resave: true,
+	saveUninitialized: true
 }));
 
 // Use Passport
@@ -123,5 +140,5 @@ app.get("*", isLoggedIn, function(req, res){
 // =======================Server
 
 app.listen(process.env.PORT || 5000, function() { 
-  console.log('Server listening on port 8080'); 
+  console.log('Server listening on port'); 
 });
