@@ -14,9 +14,7 @@
 						<p>Created By User:</p>
 						<select class="form-control dropdown_search" name="ticket[created_by]">
 							<% users.forEach(function(user){ %>
-								<% if (user.username != "Admin") { %>
 									<option value="<%= user._id %>"><%= user.username %></option>
-								<% } %>
 							<% }) %>
 						</select>
                     </div>

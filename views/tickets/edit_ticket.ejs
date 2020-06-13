@@ -19,9 +19,7 @@
 								<option value="[deleted]">[deleted]</option>	
 							<% } %>							
 							<% users.forEach(function(user){ %>
-								<% if (user.username != "Admin") { %>
 									  <option value="<%= user._id %>"><%= user.username %></option>
-								<% } %>
 							<% }) %>
 						</select>
                     </div>
