@@ -25,6 +25,7 @@ This project was created with
     * ejs: 3.1.3
     * Express: 4.17.1
     * Express-Session: 1.17.1
+    * Memorystore: 1.6.2
     * Method_Override: 3.0.0
     * Moment: 2.26.0
     * Mongoose: 5.9.14
